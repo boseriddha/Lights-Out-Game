@@ -1,0 +1,9 @@
+.Cell {
+    width: 5em;
+    height: 5em;
+    background-color: gray;
+}
+
+.Cell-Light {
+    background-color: #5800FF;
+}
