@@ -13,12 +13,33 @@ class Board extends Component {
         super(props);
         this.state = {
             hasWon: false, 
-            board: this.createBoard()
+            board: this.createBoardEasy()
         };
     }
 
     createBoardEasy() {
-
+        let x1 = Math.floor(Math.random() * this.props.nrows);
+        let y1 = Math.floor(Math.random() * this.props.ncols);
+        let x2 = Math.floor(Math.random() * this.props.nrows);
+        let y2 = Math.floor(Math.random() * this.props.ncols);
+        let condition1 = (i === x1 && (j === y1-1 || j === y1 || j === y1+1)) || (j === y1 && (i === x1-1 || i === x1+1));
+        let condition2 = (i === x2 && (j === y2-1 || j === y2 || j === y2+1)) || (j === y2 && (i === x2-1 || i === x2+1));
+        console.log(x1, y1);
+        console.log(x2, y2);
+        let board = [];
+        for(var i=0; i<this.props.nrows; i++) {
+            let row = [];
+            for(var j=0; j<this.props.ncols; j++) {
+                let num = Math.random();
+                if((i === x1 && (j === y1-1 || j === y1 || j === y1+1)) || (j === y1 && (i === x1-1 || i === x1+1)) || (i === x2 && (j === y2-1 || j === y2 || j === y2+1)) || (j === y2 && (i === x2-1 || i === x2+1))) 
+                    row.push(true);
+                else    
+                    row.push(false);
+            }
+            board.push(row);
+        }
+        console.log(board);
+        return board;        
     }
 
     createBoardHard() {
@@ -31,10 +52,6 @@ class Board extends Component {
                     row.push(true);
                 else 
                     row.push(false);
-                // if((i === 3 && (j === 2 || j === 3 || j === 4)) || (j === 3 && (i === 2 || i === 4)))
-                //     row.push(true);
-                // else    
-                //     row.push(false);
             }
             board.push(row);
         }
@@ -90,7 +107,7 @@ class Board extends Component {
     }
 
     restart() {
-        this.setState({hasWon: false, board: this.createBoard()});
+        this.setState({hasWon: false, board: this.createBoardEasy()});
     }
 
     render() {
