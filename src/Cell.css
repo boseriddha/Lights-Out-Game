@@ -2,8 +2,10 @@
     width: 5em;
     height: 5em;
     background-color: gray;
+    border: #fff solid 2px;
 }
 
 .Cell-Light {
     background-color: #5800FF;
+    transition: 1s;
 }

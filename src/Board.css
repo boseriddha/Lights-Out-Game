@@ -1,6 +1,67 @@
-.Board {
+.Board-Render,
+.Board-Win {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.Board-Render h1 {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.Board h1 {
+    white-space: nowrap;
+    font-size: 5rem;
+    color: #5800FF;
+    text-shadow:
+    /* White glow */
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    /* Green glow */
+    0 0 42px #5800FF,
+    0 0 82px #5800FF,
+    0 0 92px #5800FF,
+    0 0 102px #5800FF,
+    0 0 151px #5800FF;
+}
+
+.Board-Render p {
+    color: #fff;
+    background-color: none;
+}
+
+.Board-Restart {
+    /* width: 10em;
+    height: 3em;
+    border-radius: 10px;
+    font-size: 1em; */
+  background-color: #5800FF;
+  border-radius: 100px;
+  box-shadow: rgba(33, 0, 95, .2) 0 -25px 18px -14px inset,rgba(33, 0, 95, .15) 0 1px 2px,rgba(33, 0, 95, .15) 0 2px 4px,rgba(33, 0, 95, .15) 0 4px 8px,rgba(33, 0, 95, .15) 0 8px 16px,rgba(33, 0, 95, .15) 0 16px 32px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.Board-Restart:hover {
+  box-shadow: rgba(176, 134, 255, .35) 0 -25px 18px -14px inset,rgba(176, 134, 255,.25) 0 1px 2px,rgba(176, 134, 255,.25) 0 2px 4px,rgba(176, 134, 255,.25) 0 4px 8px,rgba(176, 134, 255,.25) 0 8px 16px,rgba(176, 134, 255,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+@media (max-width: 550px) {
+    .Board h1 {
+        font-size: 3rem;
+    }
 }

@@ -13,36 +13,11 @@ class Board extends Component {
         super(props);
         this.state = {
             hasWon: false, 
-            board: this.createBoardEasy()
+            board: this.createBoard()
         };
     }
 
-    createBoardEasy() {
-        let x1 = Math.floor(Math.random() * this.props.nrows);
-        let y1 = Math.floor(Math.random() * this.props.ncols);
-        let x2 = Math.floor(Math.random() * this.props.nrows);
-        let y2 = Math.floor(Math.random() * this.props.ncols);
-        let condition1 = (i === x1 && (j === y1-1 || j === y1 || j === y1+1)) || (j === y1 && (i === x1-1 || i === x1+1));
-        let condition2 = (i === x2 && (j === y2-1 || j === y2 || j === y2+1)) || (j === y2 && (i === x2-1 || i === x2+1));
-        console.log(x1, y1);
-        console.log(x2, y2);
-        let board = [];
-        for(var i=0; i<this.props.nrows; i++) {
-            let row = [];
-            for(var j=0; j<this.props.ncols; j++) {
-                let num = Math.random();
-                if((i === x1 && (j === y1-1 || j === y1 || j === y1+1)) || (j === y1 && (i === x1-1 || i === x1+1)) || (i === x2 && (j === y2-1 || j === y2 || j === y2+1)) || (j === y2 && (i === x2-1 || i === x2+1))) 
-                    row.push(true);
-                else    
-                    row.push(false);
-            }
-            board.push(row);
-        }
-        console.log(board);
-        return board;        
-    }
-
-    createBoardHard() {
+    createBoard() {
         let board = [];
         for(let i=0; i<this.props.nrows; i++) {
             let row = [];
@@ -77,14 +52,20 @@ class Board extends Component {
         flipCells(x-1, y);
         flipCells(x+1, y);
         
-        let winStatus = true;
+        let winStatus;
+        let count = 0;
         for(let i=0; i<nrows; i++) {
             for(let j=0; j<ncols; j++) {
                 if(newBoard[i][j]) {
-                    winStatus = false;
-                    break;
+                    count++;
                 }
             }
+        }
+
+        if(count >= 2) {
+            winStatus = false;
+        } else {
+            winStatus = true;
         }
 
         // console.log(winStatus);
@@ -107,21 +88,22 @@ class Board extends Component {
     }
 
     restart() {
-        this.setState({hasWon: false, board: this.createBoardEasy()});
+        this.setState({hasWon: false, board: this.createBoard()});
     }
 
     render() {
         return (
             <div className='Board'>
                 {this.state.hasWon ? 
-                (<div>
+                (<div className='Board-Win'>
                     <h1>YOU WON!</h1>
-                    <button onClick={() => {this.restart()}}>Restart</button>
+                    <button onClick={() => {this.restart()}} className="Board-Restart">Restart</button>
                 </div>) 
                 :
-                (<div>
+                (<div className='Board-Render'>
                     <h1>LIGHTS OUT!</h1>
-                    <table>
+                    <p>(PS. this is an easy version, win by having at maximum 2 lights switched on!)</p>
+                    <table className='Board-Table'>
                         <tbody>
                             {this.createTable()}
                         </tbody>
