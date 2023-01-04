@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Board />
-      <footer className='App-Footer'>Made by <a href='https://github.com/boseriddha'>Riddha Bose</a> 🚀</footer>
+      <footer className='App-Footer'> &lt;/&gt; by <a href='https://github.com/boseriddha'>Riddha</a> 🚀</footer>
     </div>
   );
 }
