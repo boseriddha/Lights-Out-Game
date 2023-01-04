@@ -6,7 +6,7 @@ class Board extends Component {
     static defaultProps = {
         nrows: 5,
         ncols: 5,
-        chancesLightAreOn: Math.random()
+        chancesLightAreOn: 0.50
     };
 
     constructor(props) {
@@ -30,6 +30,7 @@ class Board extends Component {
             }
             board.push(row);
         }
+
         return board;
     }
 
@@ -62,7 +63,7 @@ class Board extends Component {
             }
         }
 
-        if(count >= 2) {
+        if(count > 2) {
             winStatus = false;
         } else {
             winStatus = true;
